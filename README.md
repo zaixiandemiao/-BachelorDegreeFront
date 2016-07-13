@@ -8,12 +8,12 @@ This application takes the developer through the process of building a web-appli
 
 ### Git
 
-- A good place to learn about setting up git is [here][git-github].
-- Git [home][git-home] (download, documentation).
+- A good place to learn about setting up git is [here](https://guides.github.com/activities/hello-world/).
+- Git [home](https://github.com/) (download, documentation).
 
 ### Node.js and Tools
 
-- Get [Node.js][node-download].
+- Get [Node.js](http://nodejs.cn/).
 - Install the tool dependencies (`npm install`).
 
 ## Development
@@ -43,7 +43,7 @@ it whenever you like.
 
 ### Running unit tests
 
-We recommend using [Jasmine][jasmine] and [Karma][karma] for your unit tests/specs, but you are free
+We recommend using [Jasmine](http://jasmine.github.io/) and [Karma](https://karma-runner.github.io/1.0/index.html) for your unit tests/specs, but you are free
 to use whatever works for you.
 
 - Start Karma with `npm test`
@@ -56,7 +56,7 @@ to use whatever works for you.
 
 ### End to end testing
 
-We recommend using [Jasmine][jasmine] and [Protractor][protractor] for end-to-end testing.
+We recommend using [Jasmine](http://jasmine.github.io/) and [Protractor](http://www.protractortest.org/#/) for end-to-end testing.
 
 Requires a webserver that serves the application. See Running the app during development, above.
 
