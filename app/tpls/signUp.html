@@ -1,0 +1,65 @@
+<div class="panel panel-primary center-panel" ng-controller="signUpCtr">
+    <div class="panel-heading">
+        <div class="panel-title">注册新用户</div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form" name="usrMgrForm">
+                    <div class="form-group has-feedback" ng-class="{'has-success' : !usrMgrForm.username.$pristine && usrMgrForm.username.$valid,
+                'has-error' : !usrMgrForm.username.$pristine && usrMgrForm.username.$invalid }">
+                        <label class="col-md-2 control-label">
+                            用户名：
+                        </label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="username" placeholder="请输入用户名" ng-model="user.username" required>
+                            <div ng-show="!usrMgrForm.username.$pristine && usrMgrForm.username.$valid">
+                                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                            </div>
+                            <div ng-show="!usrMgrForm.username.$pristine && usrMgrForm.username.$invalid">
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback" ng-class="{'has-success' : !usrMgrForm.userPassword.$pristine && usrMgrForm.userPassword.$valid,
+                'has-error' : !usrMgrForm.userPassword.$pristine && usrMgrForm.userPassword.$invalid }">
+                        <label for="userPassword" class="col-md-2 control-label">密码</label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="请输入密码" ng-model="user.passwd"
+                            ng-pattern="/\w{6,}/" required>
+                            <div ng-show="!usrMgrForm.userPassword.$pristine && usrMgrForm.userPassword.$valid">
+                                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                            </div>
+                            <div ng-show="!usrMgrForm.userPassword.$pristine && usrMgrForm.userPassword.$invalid">
+                                密码至少为6位字母数字或下划线
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback" ng-class="{'has-success' : !usrMgrForm.confirmPassword.$pristine && usrMgrForm.confirmPassword.$valid,
+                'has-error' : !usrMgrForm.confirmPassword.$pristine && usrMgrForm.confirmPassword.$invalid }">
+                        <label for="confirmPassword" class="col-md-2 control-label">确认密码</label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="请再次输入密码" ng-model="userInfo.confirmPassword" pw-check="userPassword">
+                            <div ng-show="!usrMgrForm.confirmPassword.$pristine && usrMgrForm.confirmPassword.$valid">
+                                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                            </div>
+                            <div ng-show="!usrMgrForm.confirmPassword.$pristine && usrMgrForm.confirmPassword.$invalid">
+                                两次输入不一致
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-4">
+                            <a class="btn btn-success btn-lg" ng-click="submit()">确认</a>
+                        </div>
+                        <div class="col-md-offset-6">
+                            <input type="reset" value="重置" class="btn btn-default btn-lg">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

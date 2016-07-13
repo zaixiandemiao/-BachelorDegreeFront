@@ -1,0 +1,116 @@
+<div ng-controller="UserInfoCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+              个人信息
+            </h4>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal" role="form" name="addClassForm">
+                        <div class="form-group">
+                            <label for="lessonName" class="col-md-2 col-md-offset-2">用户名</label>
+                            <div class="col-md-4">
+                                <input type="text" name="lessonName" class="form-control" ng-model="user.login_username">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="stuCount" class="col-md-2 col-md-offset-2">真实姓名</label>
+                            <div class="col-md-4">
+                                <input type="number" name="stuCount" class="form-control" ng-model="user.real_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender" class="col-md-2 col-md-offset-2">性别</label>
+                            <div class="col-md-4">
+                                <input type="text" name="gender" class="form-control" ng-model="user.gender">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthday" class="col-md-2 col-md-offset-2">出生日期</label>
+                            <div class="col-md-4">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="user.birthday" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" clear-text="清零" current-text="置为今天" />
+                                    <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary btn-lg col-md-offset-5" ng-click="submit()">确认修改</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="group-template.html">
+        <div class="panel {{panelClass || 'panel-default'}}">
+            <div class="panel-heading" ng-click="toggleOpen()">
+                <h4 class="panel-title" style="color:#fa39c3" >
+              <a href tabindex="0" class="accordion-toggle"  uib-accordion-transclude="heading"><span
+                ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
+            </h4>
+            </div>
+            <div class="panel-collapse collapse" uib-collapse="!isOpen">
+                <div class="panel-body" style="text-align: right" ng-transclude></div>
+            </div>
+        </div>
+    </script>
+    <uib-accordion>
+        <uib-accordion-group is-open="status.open">
+            <uib-accordion-heading>
+                修改密码 <i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+            </uib-accordion-heading>
+    <form class="form-horizontal" role="form" name="usrMgrForm">
+            <div class="form-group has-feedback" ng-class="{'has-success' : !usrMgrForm.userPass.$pristine && usrMgrForm.userPass.$valid,
+                    'has-error' : !usrMgrForm.userPass.$pristine && usrMgrForm.userPass.$invalid }">
+                <label for="userPassword" class="col-md-2 control-label">密码</label>
+                <div class="col-md-10">
+                    <input type="password" class="form-control" id="userPass" name="userPass" placeholder="请输入密码" ng-model="user.oldPwd" ng-pattern="/\w{6,}/" required>
+                    <div ng-show="!usrMgrForm.userPass.$pristine && usrMgrForm.userPass.$valid">
+                        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                    </div>
+                    <div ng-show="!usrMgrForm.userPass.$pristine && usrMgrForm.userPass.$invalid">
+                        密码至少为6位字母数字或下划线
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group has-feedback" ng-class="{'has-success' : !usrMgrForm.userPassword.$pristine && usrMgrForm.userPassword.$valid,
+                    'has-error' : !usrMgrForm.userPassword.$pristine && usrMgrForm.userPassword.$invalid }">
+                <label for="userPassword" class="col-md-2 control-label">密码</label>
+                <div class="col-md-10">
+                    <input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="请输入密码" ng-model="user.passwd" ng-pattern="/\w{6,}/" required>
+                    <div ng-show="!usrMgrForm.userPassword.$pristine && usrMgrForm.userPassword.$valid">
+                        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                    </div>
+                    <div ng-show="!usrMgrForm.userPassword.$pristine && usrMgrForm.userPassword.$invalid">
+                        密码至少为6位字母数字或下划线
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group has-feedback" ng-class="{'has-success' : !usrMgrForm.confirmPassword.$pristine && usrMgrForm.confirmPassword.$valid,
+                    'has-error' : !usrMgrForm.confirmPassword.$pristine && usrMgrForm.confirmPassword.$invalid }">
+                <label for="confirmPassword" class="col-md-2 control-label">确认密码</label>
+                <div class="col-md-10">
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="请再次输入密码" ng-model="user.new_passwordChk" pw-check="userPassword">
+                    <div ng-show="!usrMgrForm.confirmPassword.$pristine && usrMgrForm.confirmPassword.$valid">
+                        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                    </div>
+                    <div ng-show="!usrMgrForm.confirmPassword.$pristine && usrMgrForm.confirmPassword.$invalid">
+                        两次输入不一致
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                    <button type="button" class="btn btn-primary btn-lg col-md-offset-5" ng-click="submit()">确认修改</button>
+            </div>
+            </form>
+        </uib-accordion-group>
+    </uib-accordion>
+</div>

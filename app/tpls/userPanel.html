@@ -1,0 +1,29 @@
+<div class="row" ng-controller="btnPanelController">
+    <sidebar class="visible">
+        <sidebar-item>
+            <h2 class="ui header inverted">
+                <div class="content">
+                    菜单
+                    <div class="sub header">教师操作</div>
+                </div>
+            </h2>
+        </sidebar-item>
+        <sidebar-link href="#/index" title="返回登陆页面" icon="glyphicon glyphicon-home"></sidebar-link>
+        <sidebar-item-group title="用户管理">
+           <div class="item link" ng-click="setUrl('userInfo.html')">我的信息</div>
+        </sidebar-item-group>
+        <sidebar-item-group title="课程">
+            <div class="item link" ng-click="setUrl('addClass.html')">创建实验课</div>
+            <div class="item link" ng-click="setUrl('delClass.html')">注销实验课</div>
+            <div class="item link" ng-click="setUrl('deletedLesson.html')">被删除的实验课</div>
+        </sidebar-item-group>
+        <sidebar-item-group title="报表">
+           <div class="item link" ng-click="setUrl('searchClass.html')">按实验课名称查找</div>
+        </sidebar-item-group>
+    </sidebar>
+    <div class="col-md-10 col-md-offset-2" style="padding-left:40px;">
+        <div class="slide-animate-container">
+            <div class="slide-animate" id="innerPanel" ng-include="currentUrl"></div>
+        </div>
+    </div>
+</div>

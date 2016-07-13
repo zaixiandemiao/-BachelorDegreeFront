@@ -1,0 +1,55 @@
+<div class="panel panel-primary center-panel" ng-controller="logInController">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center"><span class="glyphicon glyphicon-user"></span></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form" name="usrMgrForm">
+                    <div class="form-group has-feedback" ng-class="{'has-success' : !usrMgrForm.username.$pristine && usrMgrForm.username.$valid,
+                'has-error' : !usrMgrForm.username.$pristine && usrMgrForm.username.$invalid }">
+                        <label class="col-md-2 control-label">
+                            用户名：
+                        </label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" name="username" placeholder="推荐使用126邮箱" ng-model="user.username" required >
+<!--                            ng-pattern="/\w+@[a-zA-Z0-9]+\.com/"-->
+                            <div ng-show="!usrMgrForm.username.$pristine && usrMgrForm.username.$valid">
+                                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                            </div>
+                            <div ng-show="!usrMgrForm.username.$pristine && usrMgrForm.username.$invalid">
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback" ng-class="{'has-success' : !usrMgrForm.userPassword.$pristine && usrMgrForm.userPassword.$valid,
+                'has-error' : !usrMgrForm.userPassword.$pristine && usrMgrForm.userPassword.$invalid }">
+                        <label for="userPassword" class="col-md-2 control-label">密码</label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="请输入密码" ng-model="user.password"
+                            ng-pattern="/\w{6,}/" required>
+                            <div ng-show="!usrMgrForm.userPassword.$pristine && usrMgrForm.userPassword.$valid">
+                                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                            </div>
+                            <div ng-show="!usrMgrForm.userPassword.$pristine && usrMgrForm.userPassword.$invalid">
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-4">
+<!--                            <a href="#/userPanel" id="loginBtn" class="btn btn-success btn-lg">登录</a>-->
+                           <button class="btn btn-success btn-lg" ng-click="submit()">登陆</button>
+                        </div>
+                        <div class="col-md-offset-6">
+                            <a href="#/signUp" id="signUpBtn" class="btn btn-default btn-lg">注册</a>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

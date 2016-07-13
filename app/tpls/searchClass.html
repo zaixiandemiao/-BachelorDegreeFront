@@ -1,0 +1,36 @@
+<div class="container-fluid" ng-controller="reportListCtr">
+    <div class="row">
+        <div class="col-md-6">
+            搜索:
+            <input type="text" ng-model="query" class="form-control" placeholder="关键字..">
+        </div>
+        <div class="col-md-6">
+            排序:
+            <select ng-model="orderProp" id="orderProp" class="form-control">
+                <option value="lesson_name">课程名称</option>
+                <option value="deadline">截止日期</option>
+            </select>
+        </div>
+    </div>
+    <div class="line-padding"></div>
+    <div class="row">
+        <table class="ui inverted grey table selectable">
+            <thead>
+                <tr>
+                    <th>课程名</th>
+                    <th>应交学生人数</th>
+                    <th>实交学生人数</th>
+                    <th>截止日期</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lesson in lessons | filter: query | orderBy:orderProp" ng-click="setUrl('reportInfo.html', lesson.lesson_id)">
+                    <td>{{lesson.lesson_name}}</td>
+                    <td>{{lesson.stu_count}}</td>
+                    <td>{{lesson.report_stu_count}}</td>
+                    <td>{{lesson.deadline}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

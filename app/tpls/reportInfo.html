@@ -1,0 +1,41 @@
+<div class="container-fluid" ng-controller="reportInfoCtrl">
+    <div class="row">
+        <div class="col-md-6">
+            搜索:
+            <input type="text" ng-model="query" class="form-control" placeholder="关键字..">
+        </div>
+        <div class="col-md-6">
+            排序:
+            <select ng-model="orderProp" id="orderProp" class="form-control">
+                <option value="stu_email_addr">字母顺序</option>
+                <option value="report_count">提交次数</option>
+                <option value="handin_time">提交时间</option>
+            </select>
+        </div>
+    </div>
+    <div class="line-padding"></div>
+    <div class="row">
+        <table class="ui inverted grey table selectable">
+            <thead>
+                <tr>
+                    <th>学生提交地址</th>
+                    <th>提交次数</th>
+                    <th>邮件主题</th>
+                    <th>附件名称</th>
+                    <th>提交时间</th>
+                    <th>是否提交成功</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lesson in lessons | filter: query | orderBy:orderProp">
+                    <td>{{lesson.stu_email_addr}}</td>
+                    <td>{{lesson.report_count}}</td>
+                    <td>{{lesson.email_subject}}</td>
+                    <td>{{lesson.attach_name}}</td>
+                    <td>{{lesson.handin_time}}</td>
+                    <td>{{lesson.is_validate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

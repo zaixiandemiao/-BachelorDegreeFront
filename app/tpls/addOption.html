@@ -1,0 +1,35 @@
+<div class="panel panel-info" ng-controller="AddOptionCtr">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form" name="addClassForm">
+                    <div class="form-group">
+                        <label for="lessonName" class="col-md-2 col-md-offset-2">格式类型</label>
+                        <div class="col-md-4">
+                            <select ng-model="addoption.pattern_type_id">
+                                <option value="1">邮件主题格式约束</option>
+                                <option value="2">邮件附件文件名约束</option>
+                                <option value="3">邮件附件文件后缀约束</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuCount" class="col-md-2 col-md-offset-2">格式内容</label>
+                        <div class="col-md-8">
+                            <pattern-tabs panes="panes"></pattern-tabs>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stuCount" class="col-md-2 col-md-offset-2">注释/示例</label>
+                        <div class="col-md-8">
+                            <input type="text" ng-model="addoption.pattern_comment">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary btn-lg col-md-offset-5" ng-click="submit()">添加</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
